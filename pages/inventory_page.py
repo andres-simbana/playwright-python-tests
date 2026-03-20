@@ -20,7 +20,8 @@ class InventoryPage:
 
     def get_cart_count(self) -> int:
         if self.cart_badge.is_visible():
-            return int(self.cart_badge.text_content())
+            count_text = self.cart_badge.inner_text()
+            return int(count_text) if count_text else 0
         return 0
 
     def go_to_cart(self):

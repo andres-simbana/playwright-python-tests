@@ -5,8 +5,8 @@ from pages.cart_page import CartPage
 
 class TestCart:
 
-    def test_cart_is_empty_on_fresh_login(self, logged_in_page):
-        logged_in_page.goto("https://www.saucedemo.com/cart.html")
+    def test_cart_is_empty_on_fresh_login(self, logged_in_page, base_url):
+        logged_in_page.goto(f"{base_url}/cart.html")
         cart = CartPage(logged_in_page)
 
         assert cart.get_item_count() == 0

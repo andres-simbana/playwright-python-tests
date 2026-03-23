@@ -1,47 +1,100 @@
 # playwright-python-tests
 
-Modern browser E2E automation framework built with **Playwright** and **pytest**, following the **Page Object Model (POM)** design pattern.
+E2E test automation suite for [SauceDemo](https://www.saucedemo.com/) using **Playwright** and **Pytest**, following the **Page Object Model (POM)** pattern. Includes HTML report generation and CI/CD with GitHub Actions.
 
-## Stack
+---
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
-![Playwright](https://img.shields.io/badge/Playwright-1.x-green?style=flat-square&logo=playwright)
-![Pytest](https://img.shields.io/badge/Pytest-8.x-blue?style=flat-square&logo=pytest)
-![CI](https://github.com/Anseb77/playwright-python-tests/actions/workflows/tests.yml/badge.svg)
+## 🛠️ Stack
 
-## Project Structure
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+
+---
+
+## 📁 Project Structure
 
 ```
 playwright-python-tests/
-├── .github/workflows/     # CI/CD with GitHub Actions
-├── pages/                 # Page Object Model classes
-│   ├── login_page.py
-│   └── inventory_page.py
+├── pages/
+│   ├── login_page.py       # Login page interactions
+│   ├── inventory_page.py   # Product listing page
+│   └── cart_page.py        # Shopping cart page
 ├── tests/
 │   ├── test_login.py
-│   └── test_inventory.py
-├── conftest.py            # Shared fixtures and hooks
-├── requirements.txt
-└── pytest.ini
+│   ├── test_inventory.py
+│   └── test_cart.py
+├── conftest.py             # Pytest fixtures (browser setup/teardown)
+├── pytest.ini
+└── requirements.txt
 ```
 
-## Test Coverage
+---
 
-| Module    | Test Cases                                                      |
-|-----------|-----------------------------------------------------------------|
-| Login     | Valid login, invalid credentials, empty fields, locked user     |
-| Inventory | Items count, add to cart, multiple items, cart navigation       |
+## ⚙️ Setup
 
-## Setup
+### 1. Clone the repo
+```bash
+git clone https://github.com/andres-simbana/playwright-python-tests.git
+cd playwright-python-tests
+```
 
+### 2. Create and activate a virtual environment
+```bash
+python -m venv venv
+source venv/bin/activate        # Linux/Mac
+venv\Scripts\activate           # Windows
+```
+
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
-playwright install chromium
+```
+
+### 4. Install Playwright browsers
+```bash
+playwright install
+```
+
+---
+
+## ▶️ Running the tests
+
+Run all tests:
+```bash
 pytest
 ```
 
-Reports are generated in `reports/report.html`.
+Run a specific test file:
+```bash
+pytest tests/test_login.py
+```
 
-## CI
+Run in headed mode (visible browser):
+```bash
+pytest --headed
+```
 
-Tests run automatically on every push and pull request via GitHub Actions.
+Run in a specific browser:
+```bash
+pytest --browser firefox
+pytest --browser webkit
+```
+
+---
+
+## 📊 HTML Report
+
+After running, the report is generated at:
+```
+reports/report.html
+```
+
+Open it in any browser to see detailed results.
+
+---
+
+## 🔄 CI/CD
+
+Tests run automatically on every push via **GitHub Actions** (`.github/workflows/tests.yml`).

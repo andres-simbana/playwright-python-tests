@@ -1,5 +1,7 @@
 # playwright-python-tests
 
+![Tests](https://github.com/andres-simbana/playwright-python-tests/actions/workflows/tests.yml/badge.svg)
+
 E2E test automation suite for [SauceDemo](https://www.saucedemo.com/) using **Playwright** and **Pytest**, following the **Page Object Model (POM)** pattern. Includes HTML report generation and CI/CD with GitHub Actions.
 
 ---
